@@ -1,0 +1,21 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS D moves first player
+PASS L moves second player
+PASS split threshold fixture 0.0
+PASS adaptive thickness fixture 0.0
+PASS camera fixture 0.0
+PASS split threshold fixture 10.0
+PASS adaptive thickness fixture 10.0
+PASS camera fixture 10.0
+PASS split threshold fixture 15.0
+PASS adaptive thickness fixture 15.0
+PASS camera fixture 15.0
+PASS split threshold fixture 20.0
+PASS adaptive thickness fixture 20.0
+PASS camera fixture 20.0
+PASS split threshold fixture 5.0
+PASS adaptive thickness fixture 5.0
+PASS camera fixture 5.0
+PASS both subviewports resize
+HEADLESS STATE ONLY: input movement plus static boundary fixtures; shader pixels/films unverified. failures=0

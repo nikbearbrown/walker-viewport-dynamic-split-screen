@@ -1,0 +1,52 @@
+{
+  "game": "walker-viewport-dynamic-split-screen",
+  "mode": "recovered",
+  "revision": 1,
+  "design_version": "0.1.0-recovered",
+  "date": "2026-09-27",
+  "recovered_from": {
+    "path": "godot/",
+    "engine_detected": "Godot 4.7.2.stable (logs) gl_compatibility",
+    "pass": "reverse, silent"
+  },
+  "engine": {
+    "name": "godot",
+    "version": "4.7.2.stable (logs)",
+    "renderer": "gl_compatibility"
+  },
+  "gates": {
+    "vision": {
+      "signed_by": null,
+      "date": null,
+      "revision": null
+    },
+    "systems": {
+      "signed_by": null,
+      "date": null,
+      "revision": null
+    },
+    "world": {
+      "signed_by": null,
+      "date": null,
+      "revision": null
+    },
+    "scope": {
+      "signed_by": null,
+      "date": null,
+      "revision": null
+    }
+  },
+  "gate_note": "gate — unsigned at time of writing (silent mode; no gate checks run)",
+  "project_kind": "tech demo (not a game; movable players, no goal)",
+  "core_percentage": {
+    "core": 3,
+    "total": 10,
+    "percent": 30,
+    "over_limit": false,
+    "decision": "open, see decisions.md"
+  },
+  "missing_items": 10,
+  "edu_track": false,
+  "human_playtests": 0,
+  "notes": "Walker title-only copy of Godot viewport/dynamic_split_screen at a3b5c113. 18 headless assertions (2 input-driven, 15 static fixtures, 1 resize); no shader pixels verified. Recovered description of what exists; nothing here is approved. Gates are signed by humans only."
+}

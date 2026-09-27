@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-labelledby="t d">
+<title id="t">Recovered state flow · Dynamic Split Screen</title>
+<desc id="d">Players move each physics tick; each frame the controller places cameras and switches SINGLE/SPLIT at max_separation (10 in scene). IDs: M-01..M-05 · S-01..S-03 · F-01..F-05.</desc>
+<rect width="1200" height="640" fill="#faf9f5"/>
+<defs><marker id="a" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" refX="9" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#25354a"/></marker><marker id="ar" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" refX="9" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d24e42"/></marker></defs>
+<g font-family="Helvetica, Arial, sans-serif">
+<text x="32" y="44" font-size="26" font-weight="700" fill="#25354a">Recovered state flow · Dynamic Split Screen</text>
+<text x="32" y="68" font-size="14" fill="#5b6b7c">Players move each physics tick; each frame the controller places cameras and switches SINGLE/SPLIT at max_separation (10 in scene).</text>
+<text x="32" y="88" font-size="13" fill="#5b6b7c">IDs: M-01..M-05 · S-01..S-03 · F-01..F-05</text>
+<rect x="40" y="120" width="250" height="90" rx="10" fill="#fffdf7" stroke="#25354a" stroke-width="2.5"/>
+<text x="165.0" y="154.0" font-size="17" font-weight="700" text-anchor="middle" fill="#25354a">P1 / P2 input</text>
+<text x="165.0" y="174.0" font-size="13" text-anchor="middle" fill="#5b6b7c">WASD · IJKL/arrows · pads</text>
+<text x="165.0" y="191.0" font-size="13" text-anchor="middle" fill="#5b6b7c">project.godot:25-82 (S-02)</text>
+<rect x="340" y="120" width="260" height="90" rx="10" fill="#fffdf7" stroke="#25354a" stroke-width="2.5"/>
+<text x="470.0" y="154.0" font-size="17" font-weight="700" text-anchor="middle" fill="#25354a">player.gd physics (120/s)</text>
+<text x="470.0" y="174.0" font-size="13" text-anchor="middle" fill="#5b6b7c">v += dir*2.0; v *= 0.9</text>
+<text x="470.0" y="191.0" font-size="13" text-anchor="middle" fill="#5b6b7c">move_and_slide (M-01)</text>
+<rect x="650" y="120" width="250" height="90" rx="10" fill="#fffdf7" stroke="#25354a" stroke-width="2.5"/>
+<text x="775.0" y="154.0" font-size="17" font-weight="700" text-anchor="middle" fill="#25354a">camera_controller _process</text>
+<text x="775.0" y="174.0" font-size="13" text-anchor="middle" fill="#5b6b7c">_move_cameras (M-02)</text>
+<text x="775.0" y="191.0" font-size="13" text-anchor="middle" fill="#5b6b7c">_update_splitscreen</text>
+<path d="M290 165 L338 165" fill="none" stroke="#25354a" stroke-width="2.2" marker-end="url(#a)"/>
+<path d="M600 165 L648 165" fill="none" stroke="#25354a" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="120" y="290" width="300" height="100" rx="10" fill="#fffdf7" stroke="#25354a" stroke-width="2.5"/>
+<text x="270.0" y="320.5" font-size="17" font-weight="700" text-anchor="middle" fill="#25354a">SINGLE</text>
+<text x="270.0" y="340.5" font-size="13" text-anchor="middle" fill="#5b6b7c">split_active = false</text>
+<text x="270.0" y="357.5" font-size="13" text-anchor="middle" fill="#5b6b7c">cameras at midpoint</text>
+<text x="270.0" y="374.5" font-size="13" text-anchor="middle" fill="#5b6b7c">shader shows viewport 1</text>
+<rect x="700" y="290" width="320" height="100" rx="10" fill="#fffdf7" stroke="#25354a" stroke-width="2.5"/>
+<text x="860.0" y="320.5" font-size="17" font-weight="700" text-anchor="middle" fill="#25354a">SPLIT</text>
+<text x="860.0" y="340.5" font-size="13" text-anchor="middle" fill="#5b6b7c">split_active = true</text>
+<text x="860.0" y="357.5" font-size="13" text-anchor="middle" fill="#5b6b7c">cameras max_sep/2 from own player</text>
+<text x="860.0" y="374.5" font-size="13" text-anchor="middle" fill="#5b6b7c">per-pixel Voronoi select (M-04)</text>
+<path d="M420 320 L698 320" fill="none" stroke="#25354a" stroke-width="2.2" marker-end="url(#a)"/>
+<text x="560" y="310" font-size="13" text-anchor="middle" fill="#5b6b7c">distance &gt; 10</text>
+<path d="M700 365 L422 365" fill="none" stroke="#25354a" stroke-width="2.2" marker-end="url(#a)"/>
+<text x="560" y="385" font-size="13" text-anchor="middle" fill="#5b6b7c">distance &lt;= 10</text>
+<path d="M775 212 L775 250 L270 250 L270 288" fill="none" stroke="#25354a" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="950" y="120" width="210" height="90" rx="10" fill="#fffdf7" stroke="#25354a" stroke-width="2.5"/>
+<text x="1055.0" y="154.0" font-size="17" font-weight="700" text-anchor="middle" fill="#25354a">window resize</text>
+<text x="1055.0" y="174.0" font-size="13" text-anchor="middle" fill="#5b6b7c">both SubViewports = rect</text>
+<text x="1055.0" y="191.0" font-size="13" text-anchor="middle" fill="#5b6b7c">(M-05)</text>
+<rect x="700" y="420" width="320" height="60" rx="10" fill="#fffdf7" stroke="#25354a" stroke-width="2.5"/>
+<text x="860.0" y="447.5" font-size="17" font-weight="700" text-anchor="middle" fill="#25354a">seam 0 -&gt; 3 px</text>
+<text x="860.0" y="467.5" font-size="13" text-anchor="middle" fill="#5b6b7c">adaptive over 10..20 units (F-04)</text>
+<path d="M860 392 L860 418" fill="none" stroke="#25354a" stroke-width="2.2" marker-end="url(#a)"/>
+<rect x="40" y="510" width="420" height="60" rx="10" fill="#fffdf7" stroke="#d24e42" stroke-width="2.5" stroke-dasharray="9 7"/>
+<text x="250.0" y="537.5" font-size="17" font-weight="700" text-anchor="middle" fill="#25354a">wall_coloring.gd</text>
+<text x="250.0" y="557.5" font-size="13" text-anchor="middle" fill="#5b6b7c">exists, not attached to any node (S-03)</text>
+<rect x="520" y="510" width="640" height="60" rx="10" fill="#fffdf7" stroke="#d24e42" stroke-width="2.5" stroke-dasharray="9 7"/>
+<text x="840.0" y="537.5" font-size="17" font-weight="700" text-anchor="middle" fill="#25354a">Objective / win / fail / player interaction</text>
+<text x="840.0" y="557.5" font-size="13" text-anchor="middle" fill="#5b6b7c">none in code: [MISSING] Q-03, Q-04</text>
+<rect x="32" y="605" width="34" height="16" rx="3" fill="#fffdf7" stroke="#25354a" stroke-width="2"/><text x="74" y="618" font-size="13" fill="#5b6b7c">solid = observed in code</text><rect x="260" y="605" width="34" height="16" rx="3" fill="#fffdf7" stroke="#d24e42" stroke-width="2" stroke-dasharray="6 5"/><text x="302" y="618" font-size="13" fill="#5b6b7c">dashed = proposed / missing / not in code (unapproved)</text>
+</g>
+</svg>

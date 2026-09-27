@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Dynamic Split Screen recovered GDD deck</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+:root{--bg:#faf9f5;--ink:#25354a;--muted:#5b6b7c;--teal:#287c68;--red:#d24e42;--card:#fffdf7;--rule:#daddd6}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Helvetica,Arial,sans-serif}
+.slide{display:none;min-height:100vh;box-sizing:border-box;padding:56px 72px;max-width:1400px;margin:0 auto}
+.slide.on{display:block}
+h1{font-size:44px;margin:0 0 8px}h2{font-size:34px;margin:0 0 14px}
+.kicker{color:var(--muted);font-size:16px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:18px}
+p,li{font-size:22px;line-height:1.4}li{margin:8px 0}
+.cap{color:var(--muted);font-size:15px;margin-top:6px}
+img{max-width:100%;max-height:62vh;border:1px solid var(--rule);background:#fff}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:14px;font-weight:700;margin-right:6px}
+.obs{background:#e3f1ec;color:var(--teal)}.inf{background:#eef1f4;color:var(--muted)}.mis{background:#fdece9;color:var(--red)}
+.prop{border:2px dashed var(--red);padding:10px 14px;border-radius:8px}
+.solid{border:2px solid var(--ink);padding:10px 14px;border-radius:8px}
+table{border-collapse:collapse;font-size:18px;width:100%}td,th{border-bottom:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+.big{font-size:96px;font-weight:700;color:var(--teal);line-height:1}
+nav{position:fixed;bottom:14px;right:22px;color:var(--muted);font-size:14px}
+.zelda{border-left:6px solid var(--red);padding-left:18px}
+a{color:var(--teal)}
+@media(max-width:800px){.slide{padding:24px 16px}h1{font-size:30px}h2{font-size:24px}p,li{font-size:17px}.big{font-size:56px}}
+</style></head><body>
+<section class="slide">
+<div class="kicker">walker-viewport-dynamic-split-screen · recovered GDD 0.1.0 · 2026-09-27 · Zelda, silent</div>
+<h1>Dynamic Split Screen is a tech demo, not a game.</h1>
+<p>Two players walk apart; one screen becomes two along a line that follows them. There is movement and collision, but no goal.</p><p><span class="tag obs">OBSERVED</span> in code &nbsp; <span class="tag inf">INFERRED</span> implied &nbsp; <span class="tag mis">MISSING</span> nobody has decided</p><p class="cap">Gate — unsigned at time of writing. Nothing here is approved. → <a href="GDD.md">GDD.md</a></p>
+</section>
+<section class="slide">
+<div class="kicker">What exists · §0</div>
+<h2>The upstream picture, not a Walker capture</h2>
+<img src="../godot/screenshots/dynamic_split_screen.webp" alt="Upstream dynamic split screen screenshot"><p class="cap"><span class="tag obs">OBSERVED</span> shipped with the Godot demo (godot/README.md:48). No shader pixels inspected in Walker (FRICTIONAL.md:16).</p>
+</section>
+<section class="slide">
+<div class="kicker">Vision · §1</div>
+<h2>Ghost Center, honestly</h2>
+<div class="prop"><p><span class="tag mis">MISSING</span> Purpose in Walker, audience, demo-or-game, and — only if it becomes a game — what the two players do together. Q-01..Q-04.</p></div><p class="zelda">Zelda: this is the demo people will want to "just add a goal" to. A goal is a vision decision; a person makes it.</p>
+</section>
+<section class="slide">
+<div class="kicker">Core loop · §3</div>
+<h2>SINGLE ↔ SPLIT at 10 units</h2>
+<img src="diagrams/recovered-state.svg" alt="Recovered split-screen state flow"><p class="cap">Solid = code. Dashed = unattached script and the missing objective.</p>
+</section>
+<section class="slide">
+<div class="kicker">Mechanics · §5</div>
+<h2>What the code does</h2>
+<table><tr><th>ID</th><th>Behaviour</th><th>Tag</th></tr><tr><td>M-01</td><td>Two players, X/Z only, v += dir×2, ×0.9 per tick (≈18 u/s steady)</td><td><span class="tag obs">OBSERVED</span> <span class="tag inf">INFERRED speed</span></td></tr><tr><td>M-02</td><td>Cameras on the P1–P2 segment, top-down from y 10</td><td><span class="tag obs">OBSERVED</span></td></tr><tr><td>M-03</td><td>Split when X/Z distance &gt; 10 (scene overrides script 20)</td><td><span class="tag obs">OBSERVED</span></td></tr><tr><td>M-04</td><td>Shader picks a viewport per pixel; seam 0→3 px</td><td><span class="tag obs">OBSERVED</span></td></tr><tr><td>M-05</td><td>SubViewports follow window size</td><td><span class="tag obs">OBSERVED</span></td></tr></table>
+</section>
+<section class="slide">
+<div class="kicker">Features · §11</div>
+<h2>CORE</h2>
+<div class="big">30%</div><p>3 of 10 CORE (movement, camera placement, split + shader). Under the 40% line.</p><p class="prop">F-09 random wall colouring: script exists, <b>not attached</b>. Q-08.</p>
+</section>
+<section class="slide">
+<div class="kicker">Verification · §13 §16</div>
+<h2>18 / 18, but 15 are fixtures</h2>
+<ul><li><span class="tag obs">OBSERVED</span> D and L key events move each player (input-driven).</li><li><span class="tag obs">OBSERVED</span> Split flag, thickness, camera X at separations 0/10/15/20/5 — players teleported, physics off.</li><li><span class="tag obs">OBSERVED</span> Both SubViewports resize.</li><li class="prop"><span class="tag mis">NOT VERIFIED</span> shader pixels, diagonal split, seam, collision routes, gamepads, frame rate, both films.</li></ul>
+</section>
+<section class="slide">
+<div class="kicker">Risks · §14</div>
+<h2>Top three</h2>
+<ol><li>Fixtures read as gameplay proof (R-01, Q-05).</li><li>Split side-selection wrong at some angles; untested (R-02).</li><li>Movement fast enough to flicker the split (R-03, Q-10).</li></ol>
+</section>
+<section class="slide">
+<div class="kicker">Open questions · decisions.md</div>
+<h2>Ten open, none decided</h2>
+<p>Q-01 purpose · Q-02 audience · Q-03 demo or game · Q-04 goal if game · Q-05 visual criteria · Q-06 film done · Q-07 CORE · Q-08 wall colouring · Q-09 pad device 0 · Q-10 feel</p><p class="zelda">Zelda: first fix is T-07 — the split should flip because a person walked the players apart, not because a test teleported them. → <a href="decisions.md">decisions.md</a></p>
+</section>
+<nav><span id="n"></span> · arrow keys / space</nav>
+<script>
+(function(){var s=[].slice.call(document.querySelectorAll('.slide')),i=0,n=document.getElementById('n');
+function go(k){s[i].classList.remove('on');i=Math.max(0,Math.min(s.length-1,k));s[i].classList.add('on');n.textContent=(i+1)+' / '+s.length;}
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(i+1);}
+else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(i-1);}else if(e.key==='Home'){go(0);}else if(e.key==='End'){go(s.length-1);}});
+document.addEventListener('click',function(e){if(e.target.closest('a'))return;go(i+(e.clientX>window.innerWidth/3?1:-1));});go(0);})();
+</script>
+</body></html>
